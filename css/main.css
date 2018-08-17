@@ -1849,7 +1849,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b05e5d;
+  background: #17a603;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3108,5 +3108,17 @@ ul.breadcrumb li+li:last-child {
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 body {
-  background: url("/images/background.jpg");
+  color: #000;
+  background: url("/images/background.jpg") fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  font-family: "Comic Sans MS", Helvetica, Verdana, "Microsoft Yahei", sans-serif;
+  font-size: 14px;
+  min-height: 101%;
+}
+body {
+  cursor: url("/images/Arr2.png"), default;
+}
+a:hover {
+  cursor: url("/images/Poy2.png"), pointer;
 }

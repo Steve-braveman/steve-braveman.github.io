@@ -108,17 +108,18 @@
 
 
 
-  <meta name="description" content="我从cnblog那里搬过来的。 旧博客。">
+  <meta name="description" content="NOIp题">
+<meta name="keywords" content="洛谷,DFS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="-置顶-新家">
-<meta property="og:url" content="http://yoursite.com/2018/08/17/blog1/index.html">
+<meta property="og:title" content="-DFS-[洛谷 P1025][NOIp 2001]数的划分">
+<meta property="og:url" content="http://yoursite.com/2018/08/17/blog9/index.html">
 <meta property="og:site_name" content="Steve_braveman">
-<meta property="og:description" content="我从cnblog那里搬过来的。 旧博客。">
+<meta property="og:description" content="NOIp题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-17T07:38:08.207Z">
+<meta property="og:updated_time" content="2018-08-17T06:52:10.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="-置顶-新家">
-<meta name="twitter:description" content="我从cnblog那里搬过来的。 旧博客。">
+<meta name="twitter:title" content="-DFS-[洛谷 P1025][NOIp 2001]数的划分">
+<meta name="twitter:description" content="NOIp题">
 
 
 
@@ -127,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/17/blog1/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/17/blog9/"/>
 
 
 
@@ -137,7 +138,7 @@
   };
 </script>
 
-  <title>-置顶-新家 | Steve_braveman</title>
+  <title>-DFS-[洛谷 P1025][NOIp 2001]数的划分 | Steve_braveman</title>
   
 
 
@@ -290,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/blog1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/blog9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Steve_braveman">
@@ -307,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">-置顶-新家
+          <h1 class="post-title" itemprop="name headline">-DFS-[洛谷 P1025][NOIp 2001]数的划分
               
             
           </h1>
@@ -332,7 +333,7 @@
                 
               
 
-              <time title="创建时间：2018-08-17 13:31:48 / 修改时间：15:38:08" itemprop="dateCreated datePublished" datetime="2018-08-17T13:31:48+08:00">2018-08-17</time>
+              <time title="创建时间：2018-08-17 14:38:36 / 修改时间：14:52:10" itemprop="dateCreated datePublished" datetime="2018-08-17T14:38:36+08:00">2018-08-17</time>
             
 
             
@@ -356,6 +357,8 @@
           
 
           
+              <div class="post-description">NOIp题</div>
+          
 
         </div>
       </header>
@@ -370,8 +373,15 @@
       
 
       
-        <p>我从cnblog那里搬过来的。</p>
-<p>旧<a href="https://www.cnblogs.com/Steve-bm/" target="_blank" rel="noopener">博客</a>。</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>将整数 $n$ 分成$k$份，且每份不能为空，任意两个方案不相同(不考虑顺序)。</p>
+<p>例如： $n=7$ ， $k=3$ ，下面三种分法被认为是相同的。</p>
+<p>$1,1,5$;<br>$1,5,1$;<br>$5,1,1$;</p>
+<p>问有多少种不同的分法。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>$n$,$k$ $(6&lt;n≤200,2≤k≤6)$</p>
+<h2 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h2><p>$1$ 个整数，即不同的分法。</p>
+<h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h2><p>7 3</p>
+<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h2><p>4</p>
+<p>这道题十分简单，就是裸的DFS，代码也只有十多行，不过需要一个小小的剪枝。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">10001</span>]=&#123;<span class="number">1</span>&#125;,n,tot,k;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>,<span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	dfs(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t,<span class="keyword">int</span> p)</span></span>&#123;<span class="comment">//一共三个参数，分别是：当前拆分出来的数、数的总和、分的第几份</span></span><br><span class="line">	<span class="keyword">if</span>(p==k)&#123;</span><br><span class="line">		<span class="keyword">if</span>(t==n) tot++;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=s;t+i*(k-p)&lt;=n;i++)&#123;<span class="comment">//剪枝</span></span><br><span class="line">		dfs(i,t+i,p+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -390,6 +400,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/洛谷/" rel="tag"><i class="fa fa-tag"></i> 洛谷</a>
+          
+            <a href="/tags/DFS/" rel="tag"><i class="fa fa-tag"></i> DFS</a>
+          
+        </div>
+      
 
       
       
@@ -399,14 +417,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/17/blog8/" rel="next" title="-其它- A+B|A-B|A*B Problem">
+                <i class="fa fa-chevron-left"></i> -其它- A+B|A-B|A*B Problem
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/17/blog2/" rel="prev" title="-其它-名字竞技场">
-                -其它-名字竞技场 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/17/bog10/" rel="prev" title="-递推-[洛谷 P1096][NOIp 2007]Hanoi双塔问题">
+                -递推-[洛谷 P1096][NOIp 2007]Hanoi双塔问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -452,8 +474,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -546,6 +577,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入格式"><span class="nav-number">2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式："><span class="nav-number">3.</span> <span class="nav-text">输出格式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入样例"><span class="nav-number">4.</span> <span class="nav-text">输入样例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出样例"><span class="nav-number">5.</span> <span class="nav-text">输出样例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -698,7 +745,65 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -717,41 +822,7 @@
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
 
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
+    
   
 
 

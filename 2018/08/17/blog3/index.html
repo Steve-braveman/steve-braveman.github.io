@@ -108,17 +108,18 @@
 
 
 
-  <meta name="description" content="我从cnblog那里搬过来的。 旧博客。">
+  <meta name="description" content="数论知识点">
+<meta name="keywords" content="数论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="-置顶-新家">
-<meta property="og:url" content="http://yoursite.com/2018/08/17/blog1/index.html">
+<meta property="og:title" content="-数论-线性筛素数">
+<meta property="og:url" content="http://yoursite.com/2018/08/17/blog3/index.html">
 <meta property="og:site_name" content="Steve_braveman">
-<meta property="og:description" content="我从cnblog那里搬过来的。 旧博客。">
+<meta property="og:description" content="数论知识点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-17T07:38:08.207Z">
+<meta property="og:updated_time" content="2018-08-17T06:28:38.508Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="-置顶-新家">
-<meta name="twitter:description" content="我从cnblog那里搬过来的。 旧博客。">
+<meta name="twitter:title" content="-数论-线性筛素数">
+<meta name="twitter:description" content="数论知识点">
 
 
 
@@ -127,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/17/blog1/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/17/blog3/"/>
 
 
 
@@ -137,7 +138,7 @@
   };
 </script>
 
-  <title>-置顶-新家 | Steve_braveman</title>
+  <title>-数论-线性筛素数 | Steve_braveman</title>
   
 
 
@@ -290,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/blog1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/blog3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Steve_braveman">
@@ -307,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">-置顶-新家
+          <h1 class="post-title" itemprop="name headline">-数论-线性筛素数
               
             
           </h1>
@@ -332,7 +333,7 @@
                 
               
 
-              <time title="创建时间：2018-08-17 13:31:48 / 修改时间：15:38:08" itemprop="dateCreated datePublished" datetime="2018-08-17T13:31:48+08:00">2018-08-17</time>
+              <time title="创建时间：2018-08-17 13:43:24 / 修改时间：14:28:38" itemprop="dateCreated datePublished" datetime="2018-08-17T13:43:24+08:00">2018-08-17</time>
             
 
             
@@ -356,6 +357,8 @@
           
 
           
+              <div class="post-description">数论知识点</div>
+          
 
         </div>
       </header>
@@ -370,8 +373,17 @@
       
 
       
-        <p>我从cnblog那里搬过来的。</p>
-<p>旧<a href="https://www.cnblogs.com/Steve-bm/" target="_blank" rel="noopener">博客</a>。</p>
+        <p>在C++中，筛素数是一个非常重要算法。</p>
+<p>我花了半天时间才明白的欧拉筛（我实在是太蒻了）。</p>
+<p>最愚蠢的方法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"yes"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"no"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>普通方法：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">sqrt</span>(n);i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"yes"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"no"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上两种方法其实都是判定方法，并不是筛法，下面说真正的筛法：</p>
+<p>1.埃筛法：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,n,flag=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">bool</span> a[<span class="number">100</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">2</span>;j&lt;=<span class="number">100</span>;j++)&#123;</span><br><span class="line">            a[i*j]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> p=<span class="number">0</span>;p&lt;=<span class="number">100</span>;p++)</span><br><span class="line">    <span class="keyword">if</span>(a[p]==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;a[p]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>思路：首先将所有2的倍数标为1，再将所有3的倍数标为1……以此类推。</p>
+<p>2.欧拉筛：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000000</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> chk[MAXN]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> p[MAXN]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> t=<span class="number">0</span>; <span class="number">6</span>     <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;MAXN;i++)&#123;</span><br><span class="line">           <span class="keyword">if</span> (!chk[i])</span><br><span class="line">           p[t++]=i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;t&amp;&amp; i*p[j]&lt;MAXN;j++)</span><br><span class="line">        &#123;</span><br><span class="line">        chk[i*p[j]] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (i%p[j]==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>思路：由于埃筛法做了许多不必要的循环，所以欧拉筛在埃筛法的基础上，省去了一些步骤，时间复杂度$O(n)$。</p>
 
       
     </div>
@@ -390,6 +402,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/数论/" rel="tag"><i class="fa fa-tag"></i> 数论</a>
+          
+        </div>
+      
 
       
       
@@ -399,14 +417,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/17/blog2/" rel="next" title="-其它-名字竞技场">
+                <i class="fa fa-chevron-left"></i> -其它-名字竞技场
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/17/blog2/" rel="prev" title="-其它-名字竞技场">
-                -其它-名字竞技场 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/17/blog4/" rel="prev" title="-数论-质数唯一分解定理">
+                -数论-质数唯一分解定理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

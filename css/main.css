@@ -1849,7 +1849,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #17a603;
+  background: #a437e4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3121,4 +3121,7 @@ body {
 }
 a:hover {
   cursor: url("/images/Poy2.png"), pointer;
+}
+a:hover {
+  cursor: url("/images/Poy2.png"), help;
 }
